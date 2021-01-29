@@ -1,5 +1,6 @@
-from node import Node
+from search.node import Node
 from collections import deque
+from queue import PriorityQueue
 
 # Uninformed Search algorithms
 
@@ -63,10 +64,11 @@ def uniform_cost_search(problem, display=False):
 # Informed (Heuristic) Search
 
 
-greedy_best_first_graph_search = best_first_graph_search
+def dijsktra(problem, display=False):
+    """ Dijsktra is dreedy best-first search with f(n) = h(n). """
+    #TODO: implement Dijskstra
+    
 
-
-# Greedy best-first search is accomplished by specifying f(n) = h(n).
 
 
 def astar_search(problem, h=None, display=False):
@@ -74,5 +76,5 @@ def astar_search(problem, h=None, display=False):
     You need to specify the h function when you call astar_search, or
     else in your Problem subclass."""
     h = memoize(h or problem.h, 'h')
-    #TODO implement astar_search
+    #TODO: implement astar_search
 

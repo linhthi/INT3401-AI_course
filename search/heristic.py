@@ -2,7 +2,7 @@
 import math
 
 def linear(node):
-    return sum([1 if node.state[i] != goal[i] else 0 for i in range(8)])
+    return sum([1 if node.state[i] != node.goal[i] else 0 for i in range(8)])
 
 def manhattan(node):
     state = node.state
