@@ -40,8 +40,13 @@ def is_goal(a,b):
                 return False
     return True
 
-def swap(a,b):
-    return(b,a)
+def get_index_blank(a):
+    x, y = (-1, -1)
+    for i in range(3):
+        for j in range(3):
+            if a[i][j] == 0:
+                x, y = (i, j)
+    return x, y
 
 def tile_switches_remaining(a,b):
     """number of tiles wrong
@@ -86,6 +91,9 @@ def copy_mat(a):
             c[i][j] = a[i][j]
     return c
 
+def swap(a,b):
+    return(b,a)
+
 def to_str(a):
     """ Convert a matrix to string """
     l = ''
@@ -103,14 +111,6 @@ def to_mat(l):
             a[i][j] = int(l[cnt])
             cnt += 1
     return a
-
-def get_index_blank(a):
-    x, y = (-1, -1)
-    for i in range(3):
-        for j in range(3):
-            if a[i][j] == 0:
-                x, y = (i, j)
-    return x, y
 
 
 def astar(a, b, h):
@@ -209,5 +209,6 @@ if __name__ == '__main__':
     elif heristic == 'tile_switches_remaining':
         h = tile_switches_remaining
     else: h = mahattan_distance
+
     cost, step, num_node = astar(read_input(input_file=sys.argv[1]), GOAL, h)
     print("Cost: {0}, step: {1}, total nodes expanded: {2}".format(cost, step, num_node))
